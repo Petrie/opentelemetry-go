@@ -29,7 +29,7 @@ import (
 )
 
 const (
-	instrumentationName    = "github.com/instrumentron"
+	instrumentationName    = "github.com/instrumentation"
 	instrumentationVersion = "v0.1.0"
 )
 
@@ -66,7 +66,10 @@ func newResource() *resource.Resource {
 }
 
 func installExportPipeline(ctx context.Context) (func(context.Context) error, error) {
-	client := otlptracehttp.NewClient()
+	client := otlptracehttp.NewClient(
+		otlptracehttp.WithInsecure(),
+	)
+
 	exporter, err := otlptrace.New(ctx, client)
 	if err != nil {
 		return nil, fmt.Errorf("creating OTLP trace exporter: %w", err)

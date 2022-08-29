@@ -28,7 +28,7 @@ import (
 )
 
 const (
-	instrumentationName    = "github.com/instrumentron"
+	instrumentationName    = "github.com/instrumentation"
 	instrumentationVersion = "v0.1.0"
 )
 
